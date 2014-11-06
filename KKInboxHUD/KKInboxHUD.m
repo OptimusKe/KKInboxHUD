@@ -24,6 +24,8 @@ static const CGFloat waitingFrameDuration  = 30;
     CGFloat starAngle;
     CGFloat endAngle;
     CADisplayLink *displayTimer;
+    UIColor *strokeColor;
+    UIColor *interpolateColor;
 }
 
 @end
@@ -35,11 +37,12 @@ static const CGFloat waitingFrameDuration  = 30;
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-
         displayTimer = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateProgress:)];
         [displayTimer addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
         increase = YES;
         waitingFrame = 0;
+        strokeColor = [UIColor greenColor];
+        interpolateColor = strokeColor;
     }
     return self;
 }
@@ -47,8 +50,7 @@ static const CGFloat waitingFrameDuration  = 30;
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGContextSetStrokeColorWithColor(context, [[UIColor greenColor] CGColor]);
+    CGContextSetStrokeColorWithColor(context, interpolateColor.CGColor);
     CGContextSetLineWidth(context, width);
     
     CGPoint center = CGPointMake(rect.size.width / 2, rect.size.height / 2);
@@ -61,8 +63,6 @@ static const CGFloat waitingFrameDuration  = 30;
         starAngle = endAngle - (2 * M_PI * progress);
     }
     CGContextAddArc(context, center.x, center.y, radius, starAngle + rotateAngle, endAngle + rotateAngle, 0);
-
-
     CGContextStrokePath(context);
 }
 
@@ -82,8 +82,28 @@ static const CGFloat waitingFrameDuration  = 30;
     CGFloat percent = fabsf(y);
     
     if(percent < 0.001){
+        
+        if(waitingFrame == 0){
+            //change next color
+            if([strokeColor isEqual:[UIColor greenColor]]){
+                strokeColor = [UIColor blueColor];
+            } else {
+                strokeColor = [UIColor greenColor];
+            }
+        }
+        
         //star waiting
         waitingFrame++;
+        
+        //color interpolate
+        CGFloat colorProgress = waitingFrame / waitingFrameDuration;
+        const CGFloat* originColors = CGColorGetComponents( interpolateColor.CGColor );
+        const CGFloat* targetColors = CGColorGetComponents( strokeColor.CGColor );
+        CGFloat newRed   = (1.0 - colorProgress) * originColors[0] + colorProgress * targetColors[0];
+        CGFloat newGreen = (1.0 - colorProgress) * originColors[1] + colorProgress * targetColors[1];
+        CGFloat newBlue  = (1.0 - colorProgress) * originColors[2] + colorProgress * targetColors[2];
+        interpolateColor = [UIColor colorWithRed:newRed green:newGreen blue:newBlue alpha:1.0];
+        
         
         //time out then keep drawing
         if(waitingFrame >= waitingFrameDuration){
