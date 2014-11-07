@@ -1,7 +1,8 @@
-![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)
+
 KKInboxHUD
 ==========
 模仿Google Inbox App HUD
+
 
 ![Alt text](http://i.imgur.com/4SBfVQX.gif)
 
@@ -21,7 +22,7 @@ hud.lineWidth = 10.0f;
 ```
 
 ## Requirements
-* iOS 7,8 
+* iOS 7 or later 
 * XCode 6 and iOS 8 SDK
 
 ## License
