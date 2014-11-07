@@ -3,7 +3,8 @@ KKInboxHUD
 ==========
 模仿Google Inbox App HUD
 
-
+Demo
+==========
 ![Alt text](http://i.imgur.com/4SBfVQX.gif)
 
 #Example Usage
