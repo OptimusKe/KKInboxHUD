@@ -33,6 +33,12 @@ hud.customColors = @[[UIColor blueColor],[UIColor redColor],[UIColor yellowColor
 hud.lineWidth = 10.0f;
 ```
 
+Remove 
+
+```
+[hud removeFromSuperview];
+```
+
 ## Requirements
 * iOS 7 or later 
 * XCode 6 and iOS 8 SDK
