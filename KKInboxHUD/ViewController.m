@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "KKInboxHUD.h"
 
-@interface ViewController (){
+@interface ViewController () {
     KKInboxHUD *hud;
 }
 
@@ -20,9 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    hud = [[KKInboxHUD alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    hud = [[KKInboxHUD alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
     hud.center = self.view.center;
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,11 +30,11 @@
 
 #pragma mark - action
 
-- (IBAction)toggleHUD:(id)sender{
-    
-    if([hud superview]){
+- (IBAction)toggleHUD:(id)sender {
+    if ([hud superview]) {
         [hud removeFromSuperview];
-    } else {
+    }
+    else {
         [self.view addSubview:hud];
     }
 }

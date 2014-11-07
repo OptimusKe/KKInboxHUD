@@ -10,4 +10,7 @@
 
 @interface KKInboxHUD : UIView
 
+@property (nonatomic, strong) NSArray *customColors;
+@property (nonatomic, assign) CGFloat lineWidth;
+
 @end
