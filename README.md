@@ -43,6 +43,10 @@ Remove
 * iOS 7 or later 
 * XCode 6 and iOS 8 SDK
 
+## Author
+
+OptimusKe (yeah200077@gmail.com)
+
 ## License
 
 MIT license. See the LICENSE file for more info.
