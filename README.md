@@ -1,5 +1,5 @@
 
-KKInboxHUD
+KKInboxHUD ![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)
 ==========
 模仿Google Inbox App HUD
 
