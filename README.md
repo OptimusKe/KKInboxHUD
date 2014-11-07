@@ -8,7 +8,13 @@ Demo
 ![Alt text](http://i.imgur.com/4SBfVQX.gif)
 
 #Example Usage
+First
 
+```
+#import "KKInboxHUD.h"
+```
+
+then 
 ```
 KKInboxHUD *hud = [[KKInboxHUD alloc] initWithFrame:frame];
 [self.view addSubview:hud];
