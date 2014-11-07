@@ -8,20 +8,22 @@ Demo
 ![Alt text](http://i.imgur.com/4SBfVQX.gif)
 
 #Example Usage
+
 First
 
 ```
 #import "KKInboxHUD.h"
 ```
 
-then 
+Then 
+
 ```
 KKInboxHUD *hud = [[KKInboxHUD alloc] initWithFrame:frame];
 [self.view addSubview:hud];
-hud.lineWidth = 10.0f;
 ```
 
 Customize
+
 ```
 /* 
    Default colors : google flat ui colors
